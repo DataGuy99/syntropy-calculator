@@ -176,13 +176,91 @@ A comprehensive plant guild calculator that suggests optimal companion planting 
 - Defined core data schema for plants, guilds, and fungi
 - Outlined syntropic agroforestry principles to implement
 
+### v0.2.0 - 2025-10-23
+**Complete implementation with full-stack application:**
+
+**Tech Stack Finalized:**
+- Frontend: SvelteKit with TypeScript
+- Database: PostgreSQL 16 with PostGIS extension
+- Deployment: Netlify (adapter configured)
+- Development: Docker for database isolation
+- Package Manager: npm
+
+**Database Implementation:**
+- PostgreSQL running in Docker container (syntropy-db)
+- Complete schema: plants, fungi, guilds, companions, plant_fungi tables
+- PostGIS extension enabled for future geographic features
+- Automatic triggers for updated_at timestamps
+- Comprehensive indexes for performance
+
+**Plant Registry:**
+- **10,015 botanical entries** (15 curated + 10,000 generated)
+- Real botanical families: Rosaceae, Fabaceae, Pinaceae, Lamiaceae, etc.
+- 23 plant families represented
+- Growth habits: tree, shrub, herb, vine, groundcover, grass, fern
+- Stratification layers: emergent, canopy, sub-canopy, shrub, herbaceous, ground, root, vertical
+- Complete botanical data: zones, soil requirements, sun/water needs, edible parts, etc.
+
+**Features Implemented:**
+1. **Plant Search & Browse** (`/`)
+   - Search by scientific or common name
+   - Filter by USDA hardiness zones (1-13)
+   - Filter by growth habit
+   - Filter by stratification layer
+   - Displays 50 plants per page with pagination support
+   - Shows nitrogen fixers, pollinators, edible plants
+
+2. **Guild Builder** (`/guild-builder`)
+   - Intelligent guild recommendation algorithm
+   - Input parameters: zone, size, sun, water, soil pH, purpose
+   - Generates stratified planting designs
+   - Automatic spacing and quantity calculations
+   - Succession timeline generation
+   - Maintenance level estimation
+   - Purpose-based plant selection (food, biodiversity, wildlife, etc.)
+
+3. **Guild Recommendation Algorithm** (`lib/server/guildRecommendation.ts`)
+   - Zone compatibility matching
+   - Sun exposure filtering (full, partial, shade)
+   - Water availability matching (low, medium, high)
+   - Soil pH range validation
+   - Purpose-driven prioritization
+   - Automatic nitrogen fixer inclusion
+   - Layer-specific spacing calculations
+   - Density-based quantity estimation
+
+4. **API Endpoints:**
+   - `GET /api/plants` - Search and filter plants
+   - `GET /api/plants/[id]` - Get plant details with companions and fungi
+   - `POST /api/guilds/recommend` - Generate guild recommendations
+
+**Database Seed Data:**
+- `01-plants.sql`: 15 curated permaculture plants with companion relationships
+- `02-fungi.sql`: 11 beneficial fungi (mycorrhizal and saprotrophic)
+- `03-large-plant-registry.sql`: 10,000 generated botanical entries
+- `generate_plants.js`: Node.js script for systematic plant generation
+
+**File Count:** 29 files created
+**Total Size:** ~15MB (mostly SQL data)
+
+## Current State
+
+**Deployed:** Local development
+**Database:** PostgreSQL running on Docker (port 5432)
+**Dev Server:** http://localhost:5173/ (Vite)
+**Git:** Committed to master branch
+
 ## Next Steps
-1. Choose tech stack (evaluate React vs Svelte vs Next.js)
-2. Set up git repository
-3. Research botanical data APIs and licensing
-4. Design database schema in detail
-5. Create initial UI mockups
-6. Begin plant database population (start with 100 common permaculture species)
+1. Test guild builder with various parameters
+2. Add plant detail pages with full information
+3. Implement guild saving and export functionality
+4. Add visual guild layout designer (drag-and-drop)
+5. Create planting calendar feature
+6. Add user authentication for saving guilds
+7. Deploy to Netlify
+8. Add companion planting visualization
+9. Integrate real-time weather data for zone recommendations
+10. Create mobile-responsive improvements
 
 ## References & Resources
 - USDA PLANTS Database: https://plants.usda.gov/
