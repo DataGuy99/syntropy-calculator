@@ -45,9 +45,14 @@
   <header>
     <h1>🌿 Syntropy Calculator</h1>
     <p>Intelligent Planting Guild Designer</p>
-    <a href="/guild-builder" class="guild-builder-link">
-      🌳 Guild Builder →
-    </a>
+    <div class="header-links">
+      <a href="/guild-builder" class="guild-builder-link">
+        🌳 Basic Guild Builder
+      </a>
+      <a href="/syntropic" class="guild-builder-link syntropic">
+        🌳 Syntropic Agroforestry Designer
+      </a>
+    </div>
   </header>
 
   <section class="search-section">
@@ -178,20 +183,36 @@
     opacity: 0.9;
   }
 
+  .header-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
   .guild-builder-link {
     display: inline-block;
-    margin-top: 1rem;
     padding: 0.75rem 1.5rem;
     background: rgba(255, 255, 255, 0.2);
     color: white;
     text-decoration: none;
     border-radius: 0.5rem;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: all 0.3s;
   }
 
   .guild-builder-link:hover {
     background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .guild-builder-link.syntropic {
+    background: rgba(16, 185, 129, 0.3);
+  }
+
+  .guild-builder-link.syntropic:hover {
+    background: rgba(16, 185, 129, 0.5);
   }
 
   .search-section {
